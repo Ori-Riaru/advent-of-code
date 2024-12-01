@@ -1,5 +1,6 @@
 My solution to event of code 2024.
 
+'''
     _\/_
      /\
      /\
@@ -13,3 +14,4 @@ My solution to event of code 2024.
      ||
    \====/
     \__/
+'''
