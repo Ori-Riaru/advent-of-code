@@ -27,4 +27,4 @@ def main():
     print(list_similarity(list1, list2))
 
 if __name__ == '__main__':
-    main()
+    main() 
