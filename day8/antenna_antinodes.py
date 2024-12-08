@@ -97,7 +97,7 @@ def main():
     print(count_antinodes_part1(antenna_groups, map_size)) # 254
 
     print("Part 2:")
-    print(count_antinodes_part2(antenna_groups, map_size)) # 951
+    print(count_antinodes_part2(antenna_groups, map_size)) # 951 
 
 if __name__ == "__main__":
     main()
