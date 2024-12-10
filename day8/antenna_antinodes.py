@@ -1,20 +1,20 @@
 from typing import List, Tuple
 
 # Counts the first antinode for each antenna pair per group
-def count_antinodes_part1(antenna_groups: dict[List[Tuple[int, int]]], map_size: int) -> int:
-    antinodes = set()
+def count_antinode_part1(antenna_groups: dict[List[Tuple[int, int]]], map_size: int) -> int:
+    antinode = set()
 
-    # for each pair of antennas calculate their antinodes
+    # for each pair of antennas calculate their antinode
     for group in antenna_groups.values():
         for a in group:
             for b in group:
-                calculate_antinodes_part1(a, b, map_size, antinodes)
+                calculate_antinode_part1(a, b, map_size, antinode)
     
-    return len(antinodes)
+    return len(antinode)
 
-# Calculates the first antinode after anntena b
-def calculate_antinodes_part1(a, b, map_size, antinodes) -> None:
-     # node can't make antinodes with itself
+# Calculates the first antinode after antenna b
+def calculate_antinode_part1(a, b, map_size, antinode) -> None:
+     # node can't make antinode with itself
     if a == b:
         return
         
@@ -23,33 +23,33 @@ def calculate_antinodes_part1(a, b, map_size, antinodes) -> None:
     y_dist = b[1] - a[1]
 
     # Calculate antinode after antenna b
-    antinode = (b[0] + x_dist,
+    current_antinode = (b[0] + x_dist,
                 b[1] + y_dist)
 
     # exclude antinode if it is out of bounds  
-    if (antinode[0] < 0 or antinode[0] >= map_size or
-        antinode[1] < 0 or antinode[1] >= map_size
+    if (current_antinode[0] < 0 or current_antinode[0] >= map_size or
+        current_antinode[1] < 0 or current_antinode[1] >= map_size
     ):
         return
 
     # found antinode
-    antinodes.add(antinode)
+    antinode.add(current_antinode)
 
-# Counts all antinodes for each antenna pair in all antennas groups
-def count_antinodes_part2( antenna_groups: dict[List[Tuple[int, int]]], map_size: int) -> int:
-    antinodes = set()
+# Counts all antinode for each antenna pair in all antennas groups
+def count_antinode_part2( antenna_groups: dict[List[Tuple[int, int]]], map_size: int) -> int:
+    antinode = set()
 
-    # for each pair of antennas calculate their antinodes
+    # for each pair of antennas calculate their antinode
     for group in antenna_groups.values():
         for a in group:
             for b in group:
-                calculate_antinodes_part2(a, b,map_size, antinodes)
+                calculate_antinode_part2(a, b,map_size, antinode)
     
-    return len(antinodes)
+    return len(antinode)
 
-# Calculates and adds all antinodes to antinodes set starting from antenna b untill out of bounds
-def calculate_antinodes_part2(a, b, map_size, antinodes):
-    # node can't make antinodes with itself
+# Calculates and adds all antinode to antinode set starting from antenna b until out of bounds
+def calculate_antinode_part2(a, b, map_size, antinode):
+    # node can't make antinode with itself
     if a == b:
         return
     
@@ -57,21 +57,21 @@ def calculate_antinodes_part2(a, b, map_size, antinodes):
     x_dist = b[0] - a[0]
     y_dist = b[1] - a[1]
 
-    # Keep calculating antinodes untill out of bounds
+    # Keep calculating antinode until out of bounds
     i = 0
     while True:
         # calculate antinode starting from antenna b
-        antinode = (b[0] + x_dist * i,
+        current_antinode = (b[0] + x_dist * i,
                     b[1] + y_dist * i)
 
         # exclude antinode if it is out of bounds  
-        if (antinode[0] < 0 or antinode[0] >= map_size or
-            antinode[1] < 0 or antinode[1] >= map_size
+        if (current_antinode[0] < 0 or current_antinode[0] >= map_size or
+            current_antinode[1] < 0 or current_antinode[1] >= map_size
         ):
             break
 
         # found antinode
-        antinodes.add(antinode)
+        antinode.add(antinode)
         i += 1
 
 def main():
@@ -94,10 +94,10 @@ def main():
                     antenna_groups[char].append((x, y))
 
     print("Part 1:")
-    print(count_antinodes_part1(antenna_groups, map_size)) # 254
+    print(count_antinode_part1(antenna_groups, map_size)) # 254
 
     print("Part 2:")
-    print(count_antinodes_part2(antenna_groups, map_size)) # 951 
+    print(count_antinode_part2(antenna_groups, map_size)) # 951 
 
 if __name__ == "__main__":
     main()

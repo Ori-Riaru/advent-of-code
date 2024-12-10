@@ -1,6 +1,4 @@
 from typing import List, Tuple
-from copy import deepcopy
-from pprint import pprint
 
 def find_start(map: List[List[chr]]) -> Tuple[int, int, int, int]:
     direction_map = {
