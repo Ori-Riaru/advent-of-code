@@ -1,8 +1,9 @@
 let
   pkgs = import <nixpkgs> {};
 in
-pkgs.mkShellNoCC {
-  packages = [
-    pkgs.python3
-  ];
-}
+  pkgs.mkShellNoCC {
+    packages = with pkgs; [
+      python3
+      bun
+    ];
+  }
