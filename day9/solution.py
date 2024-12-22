@@ -1,3 +1,35 @@
+def main():
+    disk = []
+
+    with open("./input.txt", "r") as file:
+        disk_map = file.read()
+        file_lengths = []
+        free_lengths = []
+
+        blocks = True
+        for i, char in enumerate(disk_map):
+            if blocks:
+                id = i // 2
+                num_blocks = int(char)
+                file_lengths.append(num_blocks)
+                for _ in range(num_blocks):
+                    disk.append(id)
+            else:
+                free_space = int(char)
+                free_lengths.append(free_space)
+                for _ in range(free_space):
+                    disk.append(-1)
+
+            blocks = not blocks
+            
+    
+
+        
+    #print(part1(disk))
+
+    print(part2(disk, file_lengths, free_lengths))
+
+
 def part1(disk):
     free = 0
     last = len(disk) - 1
@@ -91,36 +123,6 @@ def print_disk(disk):
     
     print()
 
-def main():
-    disk = []
-
-    with open("./input.txt", "r") as file:
-        disk_map = file.read()
-        file_lengths = []
-        free_lengths = []
-
-        blocks = True
-        for i, char in enumerate(disk_map):
-            if blocks:
-                id = i // 2
-                num_blocks = int(char)
-                file_lengths.append(num_blocks)
-                for _ in range(num_blocks):
-                    disk.append(id)
-            else:
-                free_space = int(char)
-                free_lengths.append(free_space)
-                for _ in range(free_space):
-                    disk.append(-1)
-
-            blocks = not blocks
-            
-    
-
-        
-    #print(part1(disk))
-
-    print(part2(disk, file_lengths, free_lengths))
 
             
 

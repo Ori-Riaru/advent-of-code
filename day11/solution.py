@@ -1,6 +1,12 @@
 from typing import List
 from functools import cache
 
+def main():
+    print("Part 1:")
+    print(part1([125, 17], 25))
+
+    print("Part 2:")
+    print(part2([5, 62914, 65, 972, 0, 805922, 6521, 1639064], 75))
 
 def part1(stones: List[int], n) -> int:
     for i in range(n):
@@ -42,15 +48,6 @@ def search(stone, n):
         return left + right
 
     return search(stone * 2024, n - 1)
-    
-
-
-
-def main():
-    print(part1([125, 17], 25))
-    print(part2([5, 62914, 65, 972, 0, 805922, 6521, 1639064], 75))
-
-
 
 if __name__ == '__main__':
     main()

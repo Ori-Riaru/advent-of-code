@@ -1,6 +1,19 @@
 from typing import List
 from typing import Tuple
 
+def main():
+    with open("input.txt", "r") as input:
+        board = []
+        for line in input:
+            board.append(line.strip())
+
+    print("Part 1: ")
+    print(word_search(board)) # 2493
+
+    print("\nPart 2: ")
+    print(x_search(board)) # 1890
+
+
 # Part 1
 def word_search(board: List[str]) -> int:
     # Possible patterns
@@ -68,17 +81,6 @@ def x_search(board: List[str]) -> int:
 
     return count
 
-def main():
-    with open("input.txt", "r") as input:
-        board = []
-        for line in input:
-            board.append(line.strip())
-
-    print("Part 1: ")
-    print(word_search(board)) # 2493
-
-    print("\nPart 2: ")
-    print(x_search(board)) # 1890
 
 if __name__ == '__main__':
     main() 

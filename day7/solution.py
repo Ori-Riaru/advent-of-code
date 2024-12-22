@@ -1,29 +1,3 @@
-def check_1(result, nums, i, sum):
-    # Out of numbers to check
-    if i == len(nums):
-        return sum == result
-         
-    return (
-        # Check mutliplication
-        check_1(result, nums, i + 1, sum * nums[i]) or
-        # Check addition
-        check_1(result, nums, i + 1, sum + nums[i])
-    )
-
-def check_2(result, nums, i, sum):
-    # Out of numbers to check
-    if i == len(nums):
-        return sum == result
-     
-    return (
-        # Check mutliplication
-        check_2(result, nums, i + 1, sum * nums[i]) or
-        # Check addition
-        check_2(result, nums, i + 1, sum + nums[i]) or
-        # Check concatenation
-        check_2(result, nums, i + 1, int(str(sum) + str(nums[i])))
-    )
-
 def main():
     results = []
     number_groups = []
@@ -53,6 +27,33 @@ def main():
             sum += result
             
     print(sum) # 105517128211543
+
+
+def check_1(result, nums, i, sum):
+    # Out of numbers to check
+    if i == len(nums):
+        return sum == result
+         
+    return (
+        # Check mutliplication
+        check_1(result, nums, i + 1, sum * nums[i]) or
+        # Check addition
+        check_1(result, nums, i + 1, sum + nums[i])
+    )
+
+def check_2(result, nums, i, sum):
+    # Out of numbers to check
+    if i == len(nums):
+        return sum == result
+     
+    return (
+        # Check mutliplication
+        check_2(result, nums, i + 1, sum * nums[i]) or
+        # Check addition
+        check_2(result, nums, i + 1, sum + nums[i]) or
+        # Check concatenation
+        check_2(result, nums, i + 1, int(str(sum) + str(nums[i])))
+    )
 
 if __name__ == "__main__":
     main()

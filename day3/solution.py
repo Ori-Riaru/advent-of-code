@@ -1,6 +1,17 @@
 import re
 import pprint
 
+
+def main():
+    with open("input.txt", "r") as input:
+        memory = input.read()
+
+    print("Part 1: ")
+    print(scan(memory)) # 174960292
+
+    print("\nPart 2: ")
+    print(scan_with_conditionals(memory)) # 56275602
+
 # Part 1
 def scan(memory: str) -> int:
     # Find all multiplications
@@ -30,15 +41,6 @@ def scan_with_conditionals(memory: str) -> int:
     return sum
 
 
-def main():
-    with open("input.txt", "r") as input:
-        memory = input.read()
-
-    print("Part 1: ")
-    print(scan(memory)) # 174960292
-
-    print("\nPart 2: ")
-    print(scan_with_conditionals(memory)) # 56275602
 
 if __name__ == '__main__':
     main() 

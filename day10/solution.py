@@ -1,5 +1,19 @@
 from pprint import pprint
 
+def main():
+    with open('input.txt') as file:
+        map = []
+        for i, line in enumerate(file):
+            map.append([])
+            for char in line.strip():
+                map[i].append(int(char))
+
+    print("Part 1:")
+    print(part1(map))
+
+    print("Part 2:")
+    print(part2(map))
+
 def part1(map):
     count = 0
 
@@ -72,22 +86,6 @@ def dfs_part2(map, x, y):
         count += dfs_part2(map, adj[0], adj[1], visited)
 
     return count
-
-
-def main():
-    with open('input.txt') as file:
-        map = []
-        for i, line in enumerate(file):
-            map.append([])
-            for char in line.strip():
-                map[i].append(int(char))
-
-    print("Part 1:")
-    print(part1(map))
-
-    print("Part 2:")
-    print(part2(map))
-
 
 if __name__ == '__main__':
     main()

@@ -1,5 +1,19 @@
 from typing import List
 
+def main():
+    with open("input.txt", "r") as input:
+        reports = []
+
+        for report in input:
+            reports.append([int(n) for n in report.split(" ")])
+
+    print("Part 1: ")
+    print(count_safe_reports(reports))
+
+    print("\nPart 2: ")
+    print(count_safe_reports_dampened(reports))
+
+
 # Part 1
 def count_safe_reports(reports: List[List[int]]) -> int:
     return sum(1 for report in reports if safe_report(report))
@@ -33,20 +47,6 @@ def safe_report_dampened(report: List[int]) -> bool:
             return True
 
     return False
-
-
-def main():
-    with open("input.txt", "r") as input:
-        reports = []
-
-        for report in input:
-            reports.append([int(n) for n in report.split(" ")])
-
-    print("Part 1: ")
-    print(count_safe_reports(reports))
-
-    print("\nPart 2: ")
-    print(count_safe_reports_dampened(reports))
 
 if __name__ == '__main__':
     main()

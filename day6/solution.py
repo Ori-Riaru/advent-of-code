@@ -1,5 +1,20 @@
 from typing import List, Tuple
 
+def main():
+    with open("input.txt", "r") as input:
+        map = []
+        for line in input:
+            map.append(list(line.strip()))
+    
+    x, y, x_vel, y_vel = find_start(map)
+
+    print("Part 1:")
+    visited_count, loop = trace_path(map, (x, y, x_vel, y_vel))
+    print(visited_count) # 5145
+
+    print("Part 2:")
+    print(part2(map)) # 1523
+
 def find_start(map: List[List[chr]]) -> Tuple[int, int, int, int]:
     direction_map = {
         '^': (0, -1),
@@ -68,20 +83,7 @@ def part2(map: List[List[chr]]) -> int:
 
     return loop_count
 
-def main():
-    with open("input.txt", "r") as input:
-        map = []
-        for line in input:
-            map.append(list(line.strip()))
-    
-    x, y, x_vel, y_vel = find_start(map)
 
-    print("Part 1:")
-    visited_count, loop = trace_path(map, (x, y, x_vel, y_vel))
-    print(visited_count) # 5145
-
-    print("Part 2:")
-    print(part2(map)) # 1523
 
 if __name__ == "__main__":
     main()

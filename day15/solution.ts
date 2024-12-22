@@ -6,14 +6,16 @@ function main(): void {
   let path: string = "./day15/input.txt";
 
   // Part 1
+  console.log("Part 1:");
   let input: { map: string[][]; start: Point; moves: Point[] } =
     parseInput(path);
-  part1(input.map, input.start, input.moves);
+  simulate(input.map, input.start, input.moves);
 
   // Part 2
+  console.log("Part 2:");
   let wideInput: { map: string[][]; start: Point; moves: Point[] } =
     parseInputWide(path);
-  part2(wideInput.map, wideInput.start, wideInput.moves);
+  console.log(simulate(wideInput.map, wideInput.start, wideInput.moves));
 }
 
 function parseInput(path: string): {
@@ -107,27 +109,14 @@ function parseInputWide(path: string): {
 }
 
 // Part 1
-function part1(map: string[][], bot_start: Point, moves: Point[]): void {
+function simulate(map: string[][], bot_start: Point, moves: Point[]): number {
   let bot_position: Point = bot_start;
 
   for (let direction of moves) {
     moveSquare(map, bot_position, direction);
   }
 
-  console.log("Part1:");
-  console.log(calculateGPSSum(map));
-}
-
-// Part 2
-function part2(map: string[][], bot_start: Point, moves: Point[]): void {
-  let bot_position: Point = bot_start;
-
-  for (let direction of moves) {
-    moveSquare(map, bot_position, direction);
-  }
-
-  console.log("Part2:");
-  console.log(calculateGPSSum(map));
+  return calculateGPSSum(map);
 }
 
 function moveSquare(map: string[][], square: Point, direction: Point): void {

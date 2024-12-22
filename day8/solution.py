@@ -1,5 +1,31 @@
 from typing import List, Tuple
 
+def main():
+    with open("./input.txt", "r") as file:
+        antenna_groups = {}
+        map_size = 0
+
+        for y, line in enumerate(file):
+            map_size += 1
+            for x, char in enumerate(line.strip()):
+                # Skip empty spaces
+                if char == ".":
+                    continue
+
+                # Create antenna group if it doesn't exist
+                if char not in antenna_groups:
+                    antenna_groups[char] = [(x, y)]
+                # Add antenna to group
+                else: 
+                    antenna_groups[char].append((x, y))
+
+    print("Part 1:")
+    print(count_antinode_part1(antenna_groups, map_size)) # 254
+
+    print("Part 2:")
+    print(count_antinode_part2(antenna_groups, map_size)) # 951 
+
+
 # Counts the first antinode for each antenna pair per group
 def count_antinode_part1(antenna_groups: dict[List[Tuple[int, int]]], map_size: int) -> int:
     antinode = set()
@@ -73,31 +99,6 @@ def calculate_antinode_part2(a, b, map_size, antinode):
         # found antinode
         antinode.add(antinode)
         i += 1
-
-def main():
-    with open("./input.txt", "r") as file:
-        antenna_groups = {}
-        map_size = 0
-
-        for y, line in enumerate(file):
-            map_size += 1
-            for x, char in enumerate(line.strip()):
-                # Skip empty spaces
-                if char == ".":
-                    continue
-
-                # Create antenna group if it doesn't exist
-                if char not in antenna_groups:
-                    antenna_groups[char] = [(x, y)]
-                # Add antenna to group
-                else: 
-                    antenna_groups[char].append((x, y))
-
-    print("Part 1:")
-    print(count_antinode_part1(antenna_groups, map_size)) # 254
-
-    print("Part 2:")
-    print(count_antinode_part2(antenna_groups, map_size)) # 951 
 
 if __name__ == "__main__":
     main()
