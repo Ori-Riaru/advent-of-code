@@ -1,4 +1,4 @@
-# My Solution to Event of Code 2024.
+# My Solution to Event of Code
 
 My solution to event of code 2024 written in python and typescript. 
 
@@ -21,6 +21,8 @@ My solution to event of code 2024 written in python and typescript.
 ```
 
 ## Running Solutions
+
+### 2024
 
 Run the solution for day 1-12 by execute the following command replacing <xx> with the day number:
 ```bash
