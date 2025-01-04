@@ -26,12 +26,12 @@ function parseInput(path: string) {
 function main() {
     let computers = parseInput('./2024/day23/test_input.txt');
 
-    let groups: Set<string> = set();
+    // let groups: Set<string> = set();
     for (let computer1 of Object.entries(computers)) { 
         for (let a = 0; a < 4; a++) {
             for (let b = 0; b < 4; b++) {
                 for (let c = 0; c < 4; c++) {
-                    groups.add(computer1[1][a] + ',' + computer1[1][b] + ',' + computer1[1][c]);
+                    // groups.add(computer1[1][a] + ',' + computer1[1][b] + ',' + computer1[1][c]);
                 }
             }
         }

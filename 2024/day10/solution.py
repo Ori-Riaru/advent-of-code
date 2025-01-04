@@ -18,8 +18,8 @@ def dfs_part1(map, x, y, visited):
     adjacent = [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
     for next_x, next_y in adjacent:  
         if (next_x < 0 or next_x >= len(map[0]) or
-            next_y < 0 or next_y >= len(map)) or
-            (next_x, next_y) in visited:
+            next_y < 0 or next_y >= len(map) or
+            (next_x, next_y) in visited):
             return 0
 
         slope = map[next_y][next_x] - map[y][x]

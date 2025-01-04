@@ -10,8 +10,6 @@ def main():
 
 def part1(stones: List[int], n) -> int:
     for i in range(n):
-        print(i)
-
         next = []
 
         for stone in stones:
