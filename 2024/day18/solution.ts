@@ -28,7 +28,7 @@ function main() {
 
     let result = bfs(map, start, end);
 
-    if(result === undefined) {
+    if (result === undefined) {
       console.log(byte.x + "," + byte.y);
       break;
     }
@@ -87,8 +87,12 @@ function bfs(map: string[][], start: Point, end: Point) {
       let next: Point = { x: current.x + adj.x, y: current.y + adj.y };
       let nextKey: string = `${next.x},${next.y}`;
 
-      if ((next.x >= 0 && next.x <= 70 && next.y >= 0 && next.y <= 70) &&
-        distance[nextKey] === undefined && 
+      if (
+        next.x >= 0 &&
+        next.x <= 70 &&
+        next.y >= 0 &&
+        next.y <= 70 &&
+        distance[nextKey] === undefined &&
         map[next.y][next.x] === " "
       ) {
         distance[nextKey] = distance[currentKey] + 1;
@@ -108,13 +112,14 @@ function logMap(map: string[][], distance: Record<string, number>) {
 
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[i].length; j++) {
-      
       let key = `${j},${i}`;
       if (distance[key] === undefined) {
         process.stdout.write(map[i][j]);
         process.stdout.write(map[i][j]);
       } else {
-        process.stdout.write(distance[key].toString().padStart(3, " ").slice(1, 3));
+        process.stdout.write(
+          distance[key].toString().padStart(3, " ").slice(1, 3)
+        );
       }
     }
     console.log(i);

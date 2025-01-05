@@ -25,13 +25,13 @@ function parseInput(path: string): number[] {
   return readFileSync(path, "utf8").split("\n").map(Number);
 }
 
-// 2009 
+// 2009
 function main() {
   let input = parseInput("./2024/day22/input.txt");
 
   let p: number[][] = [];
   let ca: number[][] = [];
-   
+
   // Part 1
   let sum = 0;
   for (let secret of input) {
@@ -45,7 +45,7 @@ function main() {
     sum += secret;
 
     p.push(prices);
-    ca.push(changes);    
+    ca.push(changes);
   }
   console.log(sum);
 
@@ -55,10 +55,8 @@ function main() {
     for (let b = -9; b <= 9; b++) {
       for (let c = -9; c <= 9; c++) {
         for (let d = -9; d <= 9; d++) {
-
           let totalProfit = 0;
           for (let j = 0; j < p.length; j++) {
-
             let profit = 0;
             for (let i = 0; i < 2000 - 3; i++) {
               if (
@@ -74,12 +72,10 @@ function main() {
             totalProfit += profit;
           }
 
-          
           if (totalProfit > maxProfit) {
             console.log(totalProfit);
             maxProfit = totalProfit;
           }
-
         }
       }
     }

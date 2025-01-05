@@ -40,7 +40,7 @@ function parseInput(path: string): Machine[] {
     };
 
     machines.push(machine);
-  };
+  }
 
   return machines;
 }
@@ -49,12 +49,12 @@ function part1(machines: Machine[]): void {
   console.log("Part 1:");
 
   let totalCost: number = 0;
-  for (let machine of machines){
+  for (let machine of machines) {
     let minCost: number = searchForPrize(machine);
     if (minCost !== Infinity) {
       totalCost += minCost;
     }
-  };
+  }
 
   console.log(totalCost);
 }
@@ -116,7 +116,7 @@ function part2(machines: Machine[]): void {
   for (let machine of machines) {
     machine.prize.x += 10000000000000;
     machine.prize.y += 10000000000000;
-  };
+  }
 
   let totalCost: number = 0;
   for (let machine of machines) {
@@ -124,7 +124,7 @@ function part2(machines: Machine[]): void {
     if (minCost !== Infinity) {
       totalCost += minCost;
     }
-  };
+  }
 
   console.log(totalCost);
 }

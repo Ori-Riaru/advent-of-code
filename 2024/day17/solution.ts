@@ -39,7 +39,6 @@ function rebuildARegister(program: number[]): BigInt | undefined {
   ];
 
   while (potentialSequences.length > 0) {
-
     let correctSegment: bigint = potentialSequences.shift()!;
 
     for (let nextBits of possibleNextBits) {

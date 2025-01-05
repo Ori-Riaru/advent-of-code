@@ -21,7 +21,7 @@ function parseInput(path: string): Robot[] {
   let input = readFileSync(path, "utf8");
   let lines = input.split("\n");
   let robots: Robot[] = [];
-  
+
   for (let line of lines) {
     let nums: number[] = line.match(/-*\d+/g)!.map(Number);
     let robot: Robot = {

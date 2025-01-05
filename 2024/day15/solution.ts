@@ -65,7 +65,7 @@ function parseInputWide(path: string): {
   let lines: string[] = input[0].split("\n");
 
   for (let line of lines) {
-    let row = [];
+    let row: string[] = [];
     for (let char of line) {
       if (char === "@") {
         row.push("@");

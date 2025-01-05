@@ -80,7 +80,7 @@ function buttonLengthAfterDepth(
   button: string,
   pad: string[][],
   padIndex: Record<string, Point>,
-  depth: number = 0,
+  depth: number = 0
 ): number {
   if (depth === 0) {
     return 1;
@@ -91,9 +91,9 @@ function buttonLengthAfterDepth(
     return minLengthCache[currentKey];
   }
 
-  let buttonCodes: string[] = bfs(pad, padIndex['A'], padIndex[button]);
+  let buttonCodes: string[] = bfs(pad, padIndex["A"], padIndex[button]);
   let shortestCode = Infinity;
-  for (let code of buttonCodes) { 
+  for (let code of buttonCodes) {
     let codeLength = 0;
     for (let b of code) {
       codeLength += buttonLengthAfterDepth(b, pad, padIndex, depth - 1);
@@ -142,13 +142,16 @@ function main() {
 
   let sum = 0;
   for (let code of input) {
-
     let dPadCodes: string[] = [""];
     let previous = "A";
-    
+
     for (let button of code) {
-      let codeSegments = bfs(numPad, numPadIndex[previous], numPadIndex[button]);
-      
+      let codeSegments = bfs(
+        numPad,
+        numPadIndex[previous],
+        numPadIndex[button]
+      );
+
       let currentCodes: string[] = [];
       for (let code of dPadCodes) {
         for (let segment of codeSegments) {
@@ -159,7 +162,6 @@ function main() {
       dPadCodes = currentCodes;
       previous = button;
     }
-
 
     let min = Infinity;
     for (let dPadCode of dPadCodes) {

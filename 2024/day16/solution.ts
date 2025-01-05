@@ -7,7 +7,11 @@ function main(): void {
   let input: { map: string[][]; start: Point | null; end: Point | null } =
     parseInput("./day16/input.txt");
 
-  let results: {cheapestCost: number, positions: number} = daikstras(input.map, input.start!, input.end!);
+  let results: { cheapestCost: number; positions: number } = daikstras(
+    input.map,
+    input.start!,
+    input.end!
+  );
 
   console.log("Part 1:");
   console.log(results.cheapestCost); // 127520
@@ -52,7 +56,11 @@ type Node = {
   cost: number;
 };
 
-function daikstras(map: string[][], start: Point, end: Point): {cheapestCost: number, positions: number} {
+function daikstras(
+  map: string[][],
+  start: Point,
+  end: Point
+): { cheapestCost: number; positions: number } {
   let directions: Point[] = [
     { x: 0, y: -1 }, // Up
     { x: 1, y: 0 }, // Right
@@ -61,9 +69,7 @@ function daikstras(map: string[][], start: Point, end: Point): {cheapestCost: nu
   ];
 
   let minCosts: Map<string, number> = new Map();
-  let queue: Node[] = [
-    { position: start, direction: 1, cost: 0},
-  ];
+  let queue: Node[] = [{ position: start, direction: 1, cost: 0 }];
   let backtrack: Map<string, Set<string>> = new Map();
   let globalLowest: number = Infinity;
 
@@ -122,7 +128,7 @@ function daikstras(map: string[][], start: Point, end: Point): {cheapestCost: nu
       }
 
       let newKey: string = `${newNode.position.x},${newNode.position.y},${newNode.direction}`;
-      
+
       let newMinCost = minCosts.get(newKey)!;
       if (newMinCost === undefined) {
         newMinCost = Infinity;
@@ -154,7 +160,7 @@ function daikstras(map: string[][], start: Point, end: Point): {cheapestCost: nu
   while (previousQueue.length > 0) {
     let currentKey = previousQueue.shift()!;
     if (currentKey === null) continue;
-    
+
     visited.add(currentKey);
 
     let previous: Set<string> = backtrack.get(currentKey)!;
@@ -167,25 +173,20 @@ function daikstras(map: string[][], start: Point, end: Point): {cheapestCost: nu
       if (visited.has(previousKey)) continue;
       previousQueue.push(previousKey);
     }
-    
   }
 
   // Filter out nodes with the same position but different directions
   let filtered: Set<string> = new Set();
   for (let nodeKey of visited) {
-    filtered.add(nodeKey.slice(0, nodeKey.lastIndexOf(',')));
+    filtered.add(nodeKey.slice(0, nodeKey.lastIndexOf(",")));
   }
 
   return { cheapestCost: globalLowest, positions: filtered.size };
 }
 
-function logMap(
-  map: string[][],
-  shortest: Set<string> = new Set()
-): void {
+function logMap(map: string[][], shortest: Set<string> = new Set()): void {
   for (let y = 0; y < map.length; y++) {
     for (let x = 0; x < map[y].length; x++) {
-      ;
       let key: string = `${x},${y}`;
       if (shortest.has(key)) {
         process.stdout.write("+ ");
