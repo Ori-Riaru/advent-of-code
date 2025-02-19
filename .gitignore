@@ -175,3 +175,11 @@ dist
 
 # Finder (MacOS) folder config
 .DS_Store
+
+# Rust
+target
+target/*
+
+# direnv
+.direnv
+.direnv/*
